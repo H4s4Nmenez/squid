@@ -1,0 +1,493 @@
+server:
+verbosity: 1
+statistics-interval: 120
+statistics-cumulative: yes
+num-threads: 1
+interface: 0.0.0.0
+outgoing-range: 512
+num-queries-per-thread: 1024
+msg-cache-size: 32m
+rrset-cache-size: 64m
+msg-cache-slabs: 4
+rrset-cache-slabs: 4
+cache-max-ttl: 86400
+infra-host-ttl: 60
+infra-lame-ttl: 120
+infra-cache-numhosts: 10000
+infra-cache-lame-size: 10k
+do-ip4: yes
+do-ip6: no
+do-udp: yes
+do-tcp: yes
+do-daemonize: yes
+access-control: 0.0.0.0/0 allow
+chroot: "/etc/unbound"
+
+
+echo "echo 3 > /proc/sys/vm/drop_caches && swapoff -a && swapon -a" >> /etc/claer.sh
+
+
+/ip afirewall address-list
+add address=10.0.0.0/8 list=RFC1918
+add address=172.16.0.0/12 list=RFC1918
+add address=192.168.0.0/16 list=RFC1918
+add address=74.119.76.0/22 list=facebook
+add address=69.63.184.0/21 list=facebook
+add address=69.63.176.0/21 list=facebook
+add address=69.63.176.0/20 list=facebook
+add address=69.171.255.0/24 list=facebook
+add address=69.171.240.0/20 list=facebook
+add address=69.171.239.0/24 list=facebook
+add address=69.171.224.0/20 list=facebook
+add address=69.171.224.0/19 list=facebook
+add address=66.220.152.0/21 list=facebook
+add  address=66.220.144.0/21 list=facebook
+add  address=66.220.144.0/20 list=facebook
+add  address=45.64.40.0/22 list=facebook
+add  address=31.13.96.0/19 list=facebook
+add  address=31.13.95.0/24 list=facebook
+add  address=31.13.94.0/24 list=facebook
+add  address=31.13.92.0/24 list=facebook
+add  address=31.13.91.0/24 list=facebook
+add  address=31.13.90.0/24 list=facebook
+add  address=31.13.87.0/24 list=facebook
+add  address=31.13.86.0/24 list=facebook
+add  address=31.13.85.0/24 list=facebook
+add  address=31.13.84.0/24 list=facebook
+add  address=31.13.83.0/24 list=facebook
+add  address=31.13.82.0/24 list=facebook
+add  address=31.13.81.0/24 list=facebook
+add  address=31.13.80.0/24 list=facebook
+add  address=31.13.78.0/24 list=facebook
+add  address=31.13.77.0/24 list=facebook
+add  address=31.13.76.0/24 list=facebook
+add  address=31.13.74.0/24 list=facebook
+add  address=31.13.73.0/24 list=facebook
+add  address=31.13.72.0/24 list=facebook
+add  address=31.13.71.0/24 list=facebook
+add  address=31.13.70.0/24 list=facebook
+add  address=31.13.69.0/24 list=facebook
+add  address=31.13.68.0/24 list=facebook
+add  address=31.13.67.0/24 list=facebook
+add  address=31.13.66.0/24 list=facebook
+add  address=31.13.65.0/24 list=facebook
+add  address=31.13.64.0/24 list=facebook
+add  address=31.13.64.0/19 list=facebook
+add  address=31.13.64.0/18 list=facebook
+add  address=31.13.24.0/21 list=facebook
+add  address=204.15.20.0/22 list=facebook
+add  address=199.201.67.0/24 list=facebook
+add  address=199.201.66.0/24 list=facebook
+add  address=199.201.65.0/24 list=facebook
+add  address=199.201.64.0/24 list=facebook
+add  address=199.201.64.0/22 list=facebook
+add  address=185.60.219.0/24 list=facebook
+add  address=185.60.218.0/24 list=facebook
+add  address=185.60.216.0/24 list=facebook
+add  address=185.60.216.0/22 list=facebook
+add  address=173.252.96.0/19 list=facebook
+add  address=173.252.88.0/21 list=facebook
+add  address=173.252.64.0/19 list=facebook
+add  address=157.240.9.0/24 list=facebook
+add  address=157.240.8.0/24 list=facebook
+add  address=157.240.7.0/24 list=facebook
+add  address=157.240.6.0/24 list=facebook
+add  address=157.240.3.0/24 list=facebook
+add  address=157.240.2.0/24 list=facebook
+add  address=157.240.191.0/24 list=facebook
+add  address=157.240.190.0/24 list=facebook
+add  address=157.240.189.0/24 list=facebook
+add  address=157.240.188.0/24 list=facebook
+add  address=157.240.187.0/24 list=facebook
+add address=157.240.186.0/24 list=facebook
+add address=157.240.161.0/24 list=facebook
+add address=157.240.138.0/24 list=facebook
+add address=157.240.137.0/24 list=facebook
+add address=157.240.136.0/24 list=facebook
+add address=157.240.135.0/24 list=facebook
+add address=157.240.134.0/24 list=facebook
+add address=157.240.133.0/24 list=facebook
+add address=157.240.132.0/24 list=facebook
+add address=157.240.131.0/24 list=facebook
+add address=157.240.130.0/24 list=facebook
+add address=157.240.129.0/24 list=facebook
+add address=157.240.12.0/24 list=facebook
+add address=157.240.11.0/24 list=facebook
+add address=157.240.10.0/24 list=facebook
+add address=157.240.1.0/24 list=facebook
+add address=157.240.0.0/24 list=facebook
+add address=157.240.0.0/17 list=facebook
+add address=146.88.59.0/24 list=facebook
+add address=129.205.94.0/23 list=facebook
+add address=216.240.136.162 list=games
+add address=216.240.136.167 list=games
+add address=94.75.208.164 list=games
+add address=62.212.91.21 list=games
+add address=206.127.144.0/20 list=games
+add address=12.129.193.0/24 list=games
+add address=12.129.222.0/23 list=games
+add address=12.129.225.0/24 list=games
+add address=12.129.228.0/24 list=games
+add address=12.129.233.0/24 list=games
+add address=12.129.252.0/23 list=games
+add address=63.241.255.0/24 list=games
+add address=72.5.213.0/24 list=games
+add address=80.239.149.0/24 list=games
+add address=80.239.179.0/24 list=games
+add address=80.239.181.0/24 list=games
+add address=80.239.185.0/24 list=games
+add address=80.239.233.0/24 list=games
+add address=192.12.244.0/24 list=games
+add address=195.12.246.0/24 list=games
+add address=199.107.6.0/23 list=games
+add address=199.107.24.0/23 list=games
+add address=206.16.118.0/23 list=games
+add address=206.16.147.0/24 list=games
+add address=206.18.148.0/23 list=games
+add address=206.18.98.0/23 list=games
+add address=206.16.235.0/24 list=games
+add address=206.17.111.0/24 list=games
+add address=213.248.123.0/24 list=games
+add address=213.248.127.0/24 list=games
+add address=202.9.66.0/23 list=games
+add address=12.129.254.0/23 list=games
+add address=12.129.206.0/24 list=games
+add address=12.129.242.0/24 list=games
+add address=12.130.245.0/24 list=games
+add address=12.130.244.0/24 list=games
+add address=12.130.246.0/24 list=games
+add address=63.150.138.0/24 list=games
+add address=103.10.124.0/24 list=games
+add address=103.10.125.0/24 list=games
+add address=103.28.54.0/23 list=games
+add address=146.66.152.0/23 list=games
+add address=146.66.154.0/24 list=games
+add address=146.66.155.0/24 list=games
+add address=146.66.156.0/23 list=games
+add address=146.66.158.0/23 list=games
+add address=185.25.180.0/23 list=games
+add address=185.25.182.0/24 list=games
+add address=192.69.96.0/22 list=games
+add address=205.196.6.0/24 list=games
+add address=208.64.200.0/24 list=games
+add address=208.64.201.0/24 list=games
+add address=208.64.202.0/24 list=games
+add address=208.64.203.0/24 list=games
+add address=208.78.164.0/22 list=games
+add address=216.111.123.0/24 list=games
+add address=31.186.224.0/24 list=games
+add address=31.186.226.0/24 list=games
+add address=64.7.194.0/24 list=games
+add address=95.172.65.0/24 list=games
+add address=95.172.70.0/24 list=games
+add address=66.150.148.0/24 list=games
+add address=192.64.168.0/24 list=games
+add address=192.64.169.0/24 list=games
+add address=192.64.170.0/24 list=games
+add address=216.133.234.0/24 list=games
+add address=59.100.95.128/25 list=games
+add address=216.240.145.9 list=games
+add address=64.69.36.224 list=games
+add address=208.70.75.171 list=games
+add address=208.70.78.93 list=games
+add address=64.56.65.9 list=games
+add address=74.222.8.249 list=games
+add address=216.18.198.2 list=games
+add address=173.231.26.242 list=games
+add address=66.212.28.128 list=games
+add address=66.63.191.237 list=games
+add address=72.11.142.216 list=games
+add address=72.11.142.217 list=games
+add address=96.44.172.186 list=games
+add address=96.44.177.26 list=games
+add address=96.44.177.27 list=games
+add address=72.11.142.218 list=games
+add address=64.120.10.178 list=games
+add address=72.51.46.93 list=games
+add address=173.245.68.180 list=games
+add address=173.245.68.178 list=games
+add address=8.17.252.162 list=games
+add address=8.17.252.163 list=games
+add address=50.23.65.37 list=games
+add address=174.127.96.124 list=games
+add address=174.127.96.127 list=games
+add address=66.109.20.100 list=games
+add address=66.199.235.194 list=games
+add address=72.9.100.90 list=games
+add address=173.208.45.82 list=games
+add address=69.162.127.98 list=games
+add address=174.133.108.202 list=games
+add address=174.34.132.50 list=games
+add address=70.32.43.122 list=games
+add address=184.154.38.138 list=games
+add address=78.129.220.51 list=games
+add address=188.138.24.38 list=games
+add address=85.10.193.111 list=games
+add address=91.191.144.94 list=games
+add address=46.21.207.116 list=games
+add address=159.153.0.0/16 list=games
+add address=64.25.32.0/20 list=games
+add address=206.82.192.0/19 list=games
+add address=45.121.184.0/23 list=games
+add address=45.121.186.0/23 list=games
+add address=153.254.86.0/24 list=games
+add address=155.133.240.0/23 list=games
+add address=155.133.242.0/23 list=games
+add address=155.133.244.0/24 list=games
+add address=155.133.245.0/24 list=games
+add address=162.254.192.0/24 list=games
+add address=162.254.193.0/24 list=games
+add address=162.254.194.0/23 list=games
+add address=162.254.196.0/24 list=games
+add address=162.254.197.0/24 list=games
+add address=162.254.198.0/24 list=games
+add address=162.254.199.0/24 list=games
+add address=185.25.183.0/24 list=games
+add address=205.185.194.0/24 list=games
+add address=203.89.146.0/23 list=games
+add address=122.102.52.0/24 list=games
+add address=202.93.16.0/20 list=games
+add address=122.102.53.0/24 list=games
+add address=122.102.54.0/24 list=games
+add address=122.102.48.0/24 list=games
+add address=122.102.49.0/24 list=games
+add address=122.102.50.0/24 list=games
+add address=122.102.51.0/24 list=games
+add address=49.50.4.0/22 list=games
+add address=103.18.34.0/23 list=games
+add address=103.31.110.0/23 list=games
+add address=103.247.244.0/23 list=games
+add address=103.249.58.0/23 list=games
+add address=103.253.106.0/23 list=games
+add address=103.254.126.0/23 list=games
+add address=182.16.240.0/22 list=games
+add address=182.16.244.0/22 list=games
+add address=182.16.252.0/22 list=games
+add address=202.12.75.0/24 list=games
+add address=202.43.72.0/23 list=games
+add address=202.43.74.0/23 list=games
+add address=202.70.134.0/23 list=games
+add address=203.171.221.0/24 list=games
+add address=203.209.190.0/24 list=games
+add address=43.252.72.0/24 list=games
+add address=43.252.73.0/24 list=games
+add address=43.252.74.0/24 list=games
+add address=43.252.75.0/24 list=games
+add address=103.10.60.0/24 list=games
+add address=103.10.61.0/24 list=games
+add address=103.10.62.0/23 list=games
+add address=103.10.62.0/24 list=games
+add address=103.10.63.0/24 list=games
+add address=114.129.16.0/24 list=games
+add address=114.129.17.0/24 list=games
+add address=114.129.19.0/24 list=games
+add address=114.129.20.0/24 list=games
+add address=114.129.21.0/24 list=games
+add address=114.129.22.0/24 list=games
+add address=114.129.23.0/24 list=games
+add address=120.29.152.0/21 list=games
+add address=120.29.152.0/24 list=games
+add address=120.29.153.0/24 list=games
+add address=120.29.155.0/24 list=games
+add address=120.29.156.0/24 list=games
+add address=120.29.157.0/24 list=games
+add address=120.29.158.0/24 list=games
+add address=120.29.159.0/24 list=games
+add address=122.102.40.0/21 list=games
+add address=122.102.40.0/24 list=games
+add address=122.102.41.0/24 list=games
+add address=122.102.43.0/24 list=games
+add address=122.102.44.0/24 list=games
+add address=122.102.45.0/24 list=games
+add address=122.102.47.0/24 list=games
+add address=180.178.96.0/20 list=games
+add address=180.178.96.0/24 list=games
+add address=180.178.97.0/24 list=games
+add address=180.178.98.0/24 list=games
+add address=180.178.99.0/24 list=games
+add address=180.178.100.0/24 list=games
+add address=180.178.102.0/24 list=games
+add address=180.178.103.0/24 list=games
+add address=180.178.104.0/24 list=games
+add address=180.178.106.0/24 list=games
+add address=180.178.107.0/24 list=games
+add address=180.178.108.0/24 list=games
+add address=180.178.109.0/24 list=games
+add address=180.178.110.0/24 list=games
+add address=180.178.111.0/24 list=games
+add address=202.93.224.0/24 list=games
+add address=202.93.225.0/24 list=games
+add address=203.176.176.0/24 list=games
+add address=203.176.177.0/24 list=games
+add address=203.176.178.0/24 list=games
+add address=27.0.196.0/24 list=games
+add address=27.0.197.0/24 list=games
+add address=27.0.198.0/24 list=games
+add address=27.0.199.0/24 list=games
+add address=43.252.184.0/22 list=games
+add address=103.248.56.0/22 list=games
+add address=202.73.16.0/21 list=games
+add address=122.11.128.0/24 list=games
+add address=203.116.0.0/16 list=games
+add address=203.117.0.0/16 list=games
+add address=203.118.0.0/18 list=games
+add address=112.121.148.0/24 list=games
+add address=112.121.144.0/20 list=games
+add address=112.121.128.0/19 list=games
+add address=125.5.12.0/24 list=games
+add address=111.223.32.0/20 list=games
+add address=122.11.128.0/18 list=games
+add address=43.251.112.0/24 list=games
+add address=72.20.0.0/18 list=games
+add address=69.60.96.0/19 list=games
+add address=216.176.192.0/20 list=games
+add address=67.210.208.0/22 list=games
+add address=143.137.146.0/24 list=games
+add address=155.133.238.0/24 list=games
+add address=155.133.239.0/24 list=games
+add address=155.133.246.0/23 list=games
+add address=155.133.248.0/24 list=games
+add address=155.133.249.0/24 list=games
+add address=155.133.250.0/23 list=games
+add address=155.133.250.0/24 list=games
+add address=155.133.251.0/24 list=games
+add address=155.133.252.0/24 list=games
+add address=155.133.254.0/24 list=games
+add address=190.217.33.0/24 list=games
+add address=202.43.160.0/20 list=games
+add address=8.0.0.0/8 list=games
+add address=8.0.0.0/9 list=games
+add address=8.31.100.0/22 list=games
+add address=174.36.64.0/18 list=games
+add address=8.31.100.0/23 list=games
+add address=103.8.56.0/24 list=games
+add address=103.8.57.0/24 list=games
+add address=103.8.58.0/23 list=games
+add address=103.8.58.0/24 list=games
+add address=103.8.59.0/24 list=games
+add address=110.93.12.0/23 list=games
+add address=110.93.12.0/24 list=games
+add address=110.93.13.0/24 list=games
+add address=110.93.14.0/23 list=games
+add address=110.93.14.0/24 list=games
+add address=110.93.15.0/24 list=games
+add address=116.212.98.0/23 list=games
+add address=116.212.98.0/24 list=games
+add address=116.212.99.0/24 list=games
+add address=202.43.116.0/23 list=games
+add address=202.43.116.0/24 list=games
+add address=202.43.117.0/24 list=games
+add address=103.248.57.0/24 list=games
+add address=202.73.20.0/24 list=games
+add address=43.252.187.0/24 list=games
+add address=43.252.184.0/24 list=games
+add address=43.252.185.0/24 list=games
+add address=43.252.186.0/24 list=games
+add address=103.248.56.0/24 list=games
+add address=103.248.58.0/24 list=games
+add address=103.248.59.0/24 list=games
+add address=202.73.16.0/24 list=games
+add address=202.73.17.0/24 list=games
+add address=202.73.18.0/24 list=games
+add address=202.73.19.0/24 list=games
+add address=202.73.21.0/24 list=gamesadd 
+add address=202.73.22.0/24 list=games
+add address=202.73.23.0/24 list=games
+add address=72.164.0.0/15 list=games
+add address=203.89.147.0/24 list=games
+add address=155.133.224.0/23 list=games
+add address=155.133.227.0/24 list=games
+add address=155.133.228.0/23 list=games
+add address=155.133.232.0/24 list=games
+add address=155.133.233.0/24 list=games
+add address=155.133.234.0/24 list=games
+add address=155.133.253.0/24 list=games
+add address=155.133.255.0/24 list=games
+add address=190.216.121.0/24 list=games
+add address=104.200.133.0/24 list=games
+add address=34.192.0.0/12 list=pubg
+add address=13.58.0.0/15 list=pubg
+add address=18.220.0.0/14 list=pubg
+add address=54.206.0.0/17 list=pubg
+add address=13.112.0.0/14 list=pubg
+add address=52.90.0.0/15 list=pubg
+add address=122.11.131.128/29 comment=gca list=exclusion
+add address=203.117.155.98 comment=gca list=exclusion
+add address=203.117.172.0/24 comment=gca list=exclusion
+add address=103.248.57.190 comment=fifa_online list=exclusion
+add address=202.73.22.0/24 comment=garena_launcer list=exclusion
+add address=94.236.124.241 comment=nfs_EA list=exclusion
+add address=94.236.46.101 comment=nfs_EA list=exclusion
+add address=202.93.21.243 comment=rohan list=exclusion
+add address=202.93.21.242 comment=rohan list=exclusion
+add address=203.89.146.62 comment=paymon list=exclusion
+add address=180.250.133.250 comment=ppob list=exclusion
+add address=203.104.174.11-203.104.174.18 comment=line list=exclusion
+add address=66.212.246.106 comment=w88id.com list=exclusion
+add address=66.212.246.8 comment=w88id.com list=exclusion
+add address=63.216.196.105 comment=ms88id.com list=exclusion
+add address=209.9.48.31 comment=w88id.com list=exclusion
+add address=110.92.24.105 comment=m88 list=exclusion
+add address=110.92.25.233 comment=m88 list=exclusion
+add address=202.61.66.105 comment=mansion888 list=exclusion
+add address=203.89.146.71 comment=sb list=exclusion
+add address=162.222.177.126 comment=tawk list=exclusion
+add address=173.255.112.195 comment=tawk list=exclusion
+add address=104.25.2.34 comment=tawk list=exclusion
+add address=37.48.88.132 comment=empire.goodgamestudios.com list=exclusion
+add address=52.84.224.0/24 comment=cloudfron list=exclusion
+add address=216.12.214.228 comment=cloudfron list=exclusion
+add address=43.252.185.0/29 comment="RDC cyberindo" list=exclusion
+add address=123.30.240.134 comment=ultraviewer list=exclusion
+add address=103.248.57.26 comment=GarenaShell list=exclusion
+add address=157.240.7.26 comment="FB HP" list=exclusion
+add address=173.236.42.0/29 comment="99 Domino Poker" list=exclusion
+add address=118.98.42.89 comment="99 Domino Poker" list=exclusion
+add address=139.59.96.119 list=exclusion
+add address=54.0.0.0/8 comment=cloudfron list=exclusion
+add address=118.107.178.108 comment=bola228.com list=exclusion
+add address=104.28.28.98 comment=pkvn.mobi list=exclusion
+add address=104.25.249.98 comment=pkrgalaxy.com list=exclusion
+add address=104.25.250.98 comment=pkrgalaxy.com list=exclusion
+add address=118.107.178.10 comment=bolaklik88.net list=exclusion
+add address=103.249.162.178 comment=multigame88.com list=exclusion
+add address=63.221.136.33 comment=ms88id.com list=exclusion
+add address=61.14.189.85 comment=ms88id.com list=exclusion
+add address=103.200.201.8 comment=.bolaqq.online list=exclusion
+add address=202.147.19.27 comment=cas88b.com list=exclusion
+add address=103.249.162.132 comment=.lobbyint.pw list=exclusion
+add address=106.10.128.0/18 comment=Yahoo! list=exclusion
+add address=106.10.192.0/19 comment=Yahoo list=exclusion
+add address=203.188.200.0/22 comment=Yahoo list=exclusion
+add address=119.161.10.0/23 comment=Yahoo! list=exclusion
+add address=91.108.56.0/22 comment="Telegram Messenger" list=exclusion
+add address=91.108.4.0/22 comment="Telegram Messenger" list=exclusion
+add address=169.55.64.0/18 comment="SoftLayer Technologies" list=exclusion
+add address=103.248.57.3 comment=pbidcek list=exclusion
+add address=103.248.57.4 comment=pbidcek list=exclusion
+add address=188.166.179.156 comment=steamanticheat list=exclusion
+add address=188.166.224.161 comment=steamanticheat list=exclusion
+add address=128.199.132.198 comment=steamanticheat list=exclusion
+add address=128.199.175.40 comment=steamanticheat list=exclusion
+add address=128.199.190.107 comment=steamanticheat list=exclusion
+add address=139.59.253.38 comment=steamanticheat list=exclusion
+add address=54.152.55.183 comment=steamanticheat list=exclusion
+add address=103.216.87.48 comment=prtalunp list=exclusion
+add address=210.210.128.0/18 comment=OLX list=exclusion
+add address=202.61.113.0/24 comment=Kompas list=exclusion
+add address=202.61.112.0/24 comment=Kompas list=exclusion
+add address=202.146.5.0/24 comment=Kompas list=exclusion
+add address=119.82.232.0/24 comment=Kompas list=exclusion
+add address=202.146.0.0/24 comment=Kompas list=exclusion
+add address=202.146.1.0/24 comment=Kompas list=exclusion
+add address=202.146.4.0/24 comment=Kompas list=exclusion
+add address=139.59.219.81 comment=cheatpb list=exclusion
+
+
+
+
+
+
+
+
+
